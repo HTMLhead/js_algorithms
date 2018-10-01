@@ -41,7 +41,6 @@ function solution(ans) {
             ans3 = ans3 + 1
         }
     })
-    console.log(bA1, bA2, bA3)
     if (ans1 === ans2 && ans1 === ans3) {
         let blank1 = []
         blank1.push(1, 2, 3)
@@ -72,6 +71,7 @@ function solution(ans) {
         return blank7
     }
 }
+
 var ans = [5,1,2,3,4,1,5,2,3,4,1,2,3,4,1,4,2,5,3,4,1,2,3,4,2,3,4,1,2,3,4,5]
 console.log(solution(ans))
 
