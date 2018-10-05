@@ -1,0 +1,3 @@
+
+
+console.log(solution(record));
