@@ -14,15 +14,3 @@ function hanoi(n, from, to) {
     console.log(from, to)
     hanoi(n - 1, others, to)
 }
-
-function hanoi2(n, from ,to, by) {
-    if(n === 1) {
-        console.log(from, to)
-        return;
-    }
-    hanoi(n - 1, from, by, to)
-    console.log(from, to)
-    hanoi(n - 1, by, to ,from)
-}
-
-hanoi2(3, 1, 3, 2)
