@@ -21,3 +21,6 @@ function solution(n) {
     }
     return i - 1
 }
+var a = 79
+console.log(a.toString(2));
+console.log(solution(78));
