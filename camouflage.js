@@ -25,6 +25,6 @@ function solution(clothes) {
     } else {
         return num + num2
     }
-}
+};
 
 console.log(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]));
