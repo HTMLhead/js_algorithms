@@ -1,30 +1,21 @@
 function solution(clothes) {
-    var bef = {}
+    const bef = {}
     clothes.forEach(arr => {
         if(bef[arr[1]] === undefined) {
-            bef[arr[1]] = [arr[0]]
+            bef[arr[1]] = 1
         } else {
-            bef[arr[1]].push(arr[0])
+            bef[arr[1]]++
         }
     })
-    var keys = Object.keys(bef);
-    num = 0;
-    keys.forEach(key => {
-        if(num === 0) {
-            num = num + bef[key].length
-        } else {
-            num = num * bef[key].length
-        }
-    })
-    num2 = 0
-    keys.forEach(key => {
-        num2 = num2 + bef[key].length
-    })
-    if(keys.length === 1) {
-        return num
+    const sum = Object.values(bef).reduce((a,b) => {return a+b},0)
+    const mult = Object.values(bef).reduce((a,b) => {return a * b}, 1)
+    if(mult === sum) {
+        return sum
     } else {
-        return num + num2
+        return sum + mult
     }
-};
+}
 
-console.log(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]));
+//notYet
+
+console.log(solution(	[["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]))
