@@ -39,4 +39,3 @@ function solution(s, n) {
 
 var arr = 'a B z'
 var a = solution(arr, 4)
-console.log(a)
