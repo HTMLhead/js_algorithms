@@ -17,4 +17,4 @@ function solution (arr) {
     return smallestArr
 }
 
-solution([1,2,3,4,5])
+solution([1,2,3,4,5,6])
