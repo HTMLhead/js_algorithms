@@ -1,20 +1,19 @@
 function solution(list, loc) {
     const indexArr = new Array(list.length).fill(0).map((v, i) => i)
-    debugger;
-    const answerArr = []
-    const answerArr2 = [];
-    while (list.length !== 0) {
-        for (let i = 0; i < list.length; i++) {
-            if (list[0] >= Math.max(...list)) {
-                answerArr.push(list.shift())
-                answerArr2.push(indexArr.shift())
-            } else {
-                list.push(list.shift())
-                indexArr.push(indexArr.shift())
-            }
+    const printedArr = [];
+    const answerArr = [];
+    while(list.length !== 0) {
+        debugger;
+        let FValue = list.shift()
+        if(FValue >= Math.max(...list)) {
+            printedArr.push(FValue)
+            answerArr.push(indexArr.shift())
+        } else if (FValue < Math.max(...list)) {
+            list.push(FValue)
+            indexArr.push(indexArr.shift())
         }
     }
-    return indexArr.indexOf(loc) + 1
+    return answerArr.indexOf(loc) + 1
 }
 
-console.log(solution([2, 3, 2, 3, 2, 3, 2, 3], 3))
+console.log(solution([2, 3, 2, 1], 3))
