@@ -7,15 +7,12 @@ function solution(clothes) {
             bef[arr[1]]++
         }
     })
-    const sum = Object.values(bef).reduce((a,b) => {return a+b},0)
-    const mult = Object.values(bef).reduce((a,b) => {return a * b}, 1)
-    if(mult === sum) {
-        return sum
-    } else {
-        return sum + mult
-    }
+
+    const valueArr = Object.values(bef)
+    
+    return valueArr.reduce((a,b) => {
+        return a * (b + 1)
+    },1) -1
 }
 
-//notYet
-
-console.log(solution(	[["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]))
+console.log(solution([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]))
