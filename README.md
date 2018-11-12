@@ -1,2 +1,3 @@
 # js_algorithms
-solved algoritms
+1. solved algoritms
+1. make method function
