@@ -1,18 +1,19 @@
 function solution(X, A) {
-    debugger
-    let answerArr = [];
-    let answer = -1
+    var set = new Set()
+    debugger;
+    var answer = [];
     A.forEach((v, i) => {
-        if(answer !== -1) return;
-        answerArr[v - 1] = 1
-        if(answerArr[X - 1] === 1) {
-            for(let j = 0; j < X; j++) {
-                if(answerArr[j] !== undefined) return;
-                answer = i
+        set.add(v)
+        if(set.has(X)) {
+            if(set.size === X) {
+                answer.push(i)
             }
         }
     })
-    return answer
+    if(answer[0] === undefined) {
+        return -1
+    }
+    return answer[0]
 }
 
-console.log(solution(5, [1, 2, 3, 5, 3, 1]))
+console.log(solution(5, [1,3,1,4,2,3,5,4]))
