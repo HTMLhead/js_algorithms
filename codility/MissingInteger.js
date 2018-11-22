@@ -11,7 +11,7 @@ function solution(A) {
         return 1
     }
     let answer = [];
-    realRemovedArr = [];
+    let realRemovedArr = [];
     removedArr.forEach((v) => {
         realRemovedArr.push(v)
     })
@@ -20,7 +20,13 @@ function solution(A) {
             answer.push(v + 1)
         }
     })
-    return answer[0]
+    var realAnswer = answer.filter(v => {
+        return v > 0
+    })
+    if(realAnswer.length === 0) {
+        return 1
+    }
+    return realAnswer[0]
 }
 
 console.log(solution([-3,-1,0,1,2,3]))

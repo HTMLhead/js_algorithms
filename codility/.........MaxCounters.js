@@ -1,21 +1,20 @@
 function solution(N, A) {
-    var obj = {}
-    for(let i = 1; i <= N; i++) {
-        obj[i] = 0
-    }
-    
+    let initedAns = new Array(N).fill(0)
+    let ans = new Array(N).fill(0)
+    let bigNum = 0
     A.forEach(v => {
+        debugger
         if(v === N + 1) {
-            var maxNum = Math.max(...Object.values(obj))
-            for(let i = 1; i <= Object.keys(obj).length; i++) {
-                obj[i] = maxNum
-            }
-            return;
+            bigNum = Math.max(...ans)
+            ans = initedAns.slice()
         } else {
-            obj[v]++
+            ans[v-1]++
         }
     })
-    return Object.values(obj)
+    let answer = new Array(N).fill(bigNum)
+    return answer.map((v, i) => {
+        return answer[i] + ans[i]
+    })
 }
 
 console.log(solution(5, [3, 4, 4, 6, 1, 4, 4] ))
