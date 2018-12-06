@@ -24,25 +24,28 @@ function readLine() {
 }
 
 // Complete the activityNotifications function below.
-function activityNotifications(expenditure, d) {
-    var arr = expenditure.splice(0, d)
-    var notification = 0
-    while (expenditure.length !== 0) {
-        var sortedArr = arr.sort()
-        if (d % 2 === 0) {
-            var slicedArr = sortedArr.slice(d / 2 - 1, d / 2 + 1)
-            var median = (slicedArr[0] + slicedArr[1]) / 2
-        } else {
-            var median = sortedArr[d / 2 - 0.5]
-        }
-        var shifValue = expenditure.shift()
-        if (median * 2 <= shifValue) {
-            notification = notification + 1
-        }
-        arr.push(shifValue)
+function activityNotifications(arr, d) {
+    let n = 0
+    let m1, m2
+    let [i1, i2] = [Math.floor((d-1)/2), Math.ceil((d-1)/2)]
+    let blkArr = new Array(201).fill(0)
+
+    for(let i = 0; i < d; i++) {
+        blkArr[arr[i]]++
     }
-    return notification
+    let l = arr.length
+    for(let i = d; i < l; i++) {
+        for(let j = 0, k = 0; k <= i1; k += blkArr[j], j++) m1 = j
+        for(let j = 0, k = 0; k <= i2; k += blkArr[j], j++) m2 = j
+        let m = (m1 + m2) / 2
+
+        if(arr[i] > m * 2) n++
+        blkArr[arr[i-d]]--
+        blkArr[arr[i]]++
+    }
+    return n
 }
+
 
 activityNotifications([2 ,3 ,4 ,2 ,3 ,6 ,8 ,4 ,5], 5)
 
