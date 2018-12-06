@@ -1,23 +1,32 @@
-// function remove(array, index) {
-//     return array.slice(0, index)
-//         .concat(array.slice(index + 1));
-// }
-
-// function solution(land) {
-//     debugger;
-//     var bigNumArr = [];
-//     var bigNumIndexArr = [];
-//     land.forEach((arr, i) => {
-//         var rmArr = remove(arr, bigNumIndexArr[i - 1])
-//         var bigNum = Math.max(...rmArr)
-//         bigNumArr.push(bigNum)
-//         bigNumIndexArr.push(arr.indexOf(bigNum))
-//     })
-//     return bigNumArr.reduce((a,b) => a + b)
-// }
 function solution(land) {
-    for(let i = 0; i < 4; i++) {
-        Math.max(land[i]) === Math.max(land[i + 1]) 
+    var bigNum = 0
+    var firstArr = land.shift() 
+    bigNum = Math.max(...firstArr)
+    var bigNumIndex = firstArr.indexOf(bigNum)
+    land.forEach((arr) => {
+        var nextBigNum = Math.max(...arr)
+        if(arr.indexOf(nextBigNum) === bigNumIndex) {
+            nextBigNum = arr.map(v => v).sort()[arr.length-2]
+            bigNum = bigNum + nextBigNum
+        } else {
+            bigNum = bigNum + nextBigNum
+        }
+    })
+    var secondBigNum = firstArr.map(v => v).sort()[firstArr.length-2]
+    var secondBigNumIndex = firstArr.indexOf(secondBigNum)
+    land.forEach((arr) => {
+        var nextBigNum = Math.max(...arr)
+        if(arr.indexOf(secondBigNum) === secondBigNumIndex) {
+            nextBignum = arr.map(v => v).sort()[arr.length-2]
+            secondBigNum = secondBigNum + nextBigNum
+        } else {
+            secondBigNum = secondBigNum + nextBigNum
+        }
+    })
+    if(secondBigNum > bigNum) {
+        return secondBigNum
+    } else {
+        return bigNum
     }
 }
 console.log(solution([[1, 2, 3, 5], [5, 6, 7, 8], [4, 3, 2, 1]]));
