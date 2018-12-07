@@ -25,25 +25,26 @@ function readLine() {
 
 // Complete the activityNotifications function below.
 function activityNotifications(arr, d) {
-    let n = 0
-    let m1, m2
+    let notification = 0
     let [i1, i2] = [Math.floor((d-1)/2), Math.ceil((d-1)/2)]
-    let blkArr = new Array(201).fill(0)
+    let m1, m2
 
+    let blkArr = new Array(201).fill(0)
     for(let i = 0; i < d; i++) {
         blkArr[arr[i]]++
     }
-    let l = arr.length
+    
+    let l = arr.length;
     for(let i = d; i < l; i++) {
         for(let j = 0, k = 0; k <= i1; k += blkArr[j], j++) m1 = j
         for(let j = 0, k = 0; k <= i2; k += blkArr[j], j++) m2 = j
         let m = (m1 + m2) / 2
-
-        if(arr[i] > m * 2) n++
+        console.log(m)
+        if(arr[i] >= m * 2) notification++
         blkArr[arr[i-d]]--
         blkArr[arr[i]]++
     }
-    return n
+    return notification
 }
 
 
