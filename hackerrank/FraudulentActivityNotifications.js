@@ -25,30 +25,28 @@ function readLine() {
 
 // Complete the activityNotifications function below.
 function activityNotifications(arr, d) {
-    let notification = 0
+    let notification = 0;
     let [i1, i2] = [Math.floor((d-1)/2), Math.ceil((d-1)/2)]
     let m1, m2
-
     let blkArr = new Array(201).fill(0)
     for(let i = 0; i < d; i++) {
         blkArr[arr[i]]++
     }
-    
-    let l = arr.length;
-    for(let i = d; i < l; i++) {
+
+    for(let i = d; i < arr.length; i++) {
         for(let j = 0, k = 0; k <= i1; k += blkArr[j], j++) m1 = j
         for(let j = 0, k = 0; k <= i2; k += blkArr[j], j++) m2 = j
         let m = (m1 + m2) / 2
-        console.log(m)
-        if(arr[i] >= m * 2) notification++
+
+        if(m <= arr[i]) {
+            notification++
+        }
+
         blkArr[arr[i-d]]--
         blkArr[arr[i]]++
     }
     return notification
 }
-
-
-activityNotifications([2 ,3 ,4 ,2 ,3 ,6 ,8 ,4 ,5], 5)
 
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
