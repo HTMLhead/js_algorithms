@@ -19,8 +19,7 @@ function solution(genres, plays) {
 
     Object.keys(obj2).forEach(v => {
         obj2[v].sort((a,b) => b-a) 
-    })
-    
+    })  
 }
 
 solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500])
