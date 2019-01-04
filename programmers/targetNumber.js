@@ -1,16 +1,10 @@
 function solution(numbers, target) {
-    var sumArr = [];
-    var obj = {}
-    numbers.forEach((v, i) => {
-        obj[i] = [v, -v]
-    })
-
-    for(let i = 0; i < numbers.length; i++) {
-        let sum = 0
-        for(let value in obj) {
-            
-        }
-    }
+	var obj = {}
+	numbers.forEach(v => {
+	if(obj[v] === undefined) {
+		obj[v] = obj[v]
+	}
+	})
     
 }
 
